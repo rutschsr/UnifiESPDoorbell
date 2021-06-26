@@ -29,13 +29,16 @@ v1.1
 //---------------------------------------------------------------
 //On board LED Connected to GPIO2
 //#define LED 2 
-#define FrontDoor 5
-#define RearDoor 4
-#define WiLight 2 
+#define FrontDoor 1
+#define RearDoor 3
+#define WiLight 15
+#define FrontDoor1 12
+#define RearDoor1 14
+#define WiLight1 2 
 
 //SSID and Password of your WiFi router
 const char* ssid = "SSID";
-const char* password = "PASSWORD";
+const char* password = "Password";
 
 //Declare a global object variable from the ESP8266WebServer class.
 ESP8266WebServer server(80); //Server on port 80
@@ -50,7 +53,7 @@ void handleFront() {
  
  digitalWrite(FrontDoor,HIGH); //LED is connected in reverse
  //server.send(200, "text/html", "LED is ON"); //Send ADC value only to client ajax request
- delay(250);
+ delay(150);
  digitalWrite(FrontDoor,LOW);
  handleRoot();
  
@@ -58,7 +61,7 @@ void handleFront() {
 
 void handleRear() { 
  digitalWrite(RearDoor,HIGH);
- delay(250);
+ delay(150);
  digitalWrite(RearDoor,LOW);
  handleRoot();
 }
@@ -73,10 +76,16 @@ void setup(void){
   pinMode(FrontDoor,OUTPUT);
   pinMode(RearDoor,OUTPUT);
   pinMode(WiLight,OUTPUT);
+  pinMode(FrontDoor1,OUTPUT);
+  pinMode(RearDoor1,OUTPUT);
+  pinMode(WiLight1,OUTPUT);
   //Power on LED state off
-  digitalWrite(FrontDoor,LOW);
-  digitalWrite(RearDoor,LOW);
-  digitalWrite(WiLight,LOW);
+  digitalWrite(FrontDoor,HIGH);
+  digitalWrite(RearDoor,HIGH);
+  digitalWrite(WiLight,HIGH);
+  digitalWrite(FrontDoor1,HIGH);
+  digitalWrite(RearDoor1,HIGH);
+  digitalWrite(WiLight1,HIGH);
 
   // Wait for connection
   while (WiFi.status() != WL_CONNECTED) {
