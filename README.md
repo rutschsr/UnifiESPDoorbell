@@ -1,4 +1,4 @@
-# UnifiESPDorbell
+# UnifiESPDoorbell
 This project integrates Unifi Doorbells with a mechanical chime.
 This allows for two doorbells to both ring a chime using a relay breakout board and a ESP8266 MCU
 Several other Integrations are needed to make this work correctly:
